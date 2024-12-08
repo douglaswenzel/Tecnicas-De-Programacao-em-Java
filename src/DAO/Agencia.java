@@ -1,257 +1,132 @@
 package DAO;
 
 public class Agencia {
-    private String tableName = "Agencias";
-    private String numAgencia;
-    private String nome;
-    private String endereco;
-    private String numero;
-    private String complemento;
-    private String bairro;
-    private String cidade;
-    private String uf;
-    private String cep;
-    private String cnpj;
-    private String gerente;
-    private String telefone;
+    final String tableName = "AGENCIAS";
+    private int numAge;
+    private String nomeAge;
+    private String endeAge;
+    private String numeAge;
+    private String complAge;
+    private String bairAge;
+    private String cidaAge;
+    private String ufAge;
+    private String cepAge;
+    private String foneAge;
 
     public Agencia() {
     }
-
-    public Agencia(String numAgencia, String nome, String endereco, String numero, String bairro, String cidade, String uf, String cep, String cnpj, String gerente) {
-        if (!validaAgencia(numAgencia, nome, endereco, numero, bairro, cidade, uf, cep, cnpj, gerente)){
-            return;
-        }
-        this.numAgencia = numAgencia;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.cnpj = cnpj;
-        this.gerente = gerente;
-    }
-
-    private boolean validaNumAgencia(String numAgencia){
-        if (numAgencia == null || numAgencia.isBlank()){
-            return false;
-        }
-        String numAgenciaLimpo = numAgencia.trim().replaceAll("[^0-9]", "");
-        return numAgenciaLimpo.length() == 4 || numAgenciaLimpo.length() == 5;
-    }
-
-    private boolean validaNome(String nome){
-        return (
-            nome != null &&
-            nome.trim().replaceAll("\\s+", " ").length() > 4 &&
-            nome.length() <= 30
-        );
-    }
-
-    private boolean validaEndereco(String endereco){
-        return (
-            endereco != null && 
-            endereco.trim().replaceAll("\\s+", "").length() > 5 &&
-            endereco.length() <= 50
-        );
-    }
-
-    private boolean validaNumero(String numero){
-        return (
-            numero == null ||
-            numero.length() <= 8
-        );
-    }
-
-    private boolean validaComplemento(String complemento) {
-        return complemento == null || complemento.length() <= 20;
-    }
-
-    private boolean validaBairro(String bairro){
-        return (
-            bairro == null || bairro.length() <= 20
-        );
-    }
-
-    private boolean validaCidade(String cidade){
-        return (
-            cidade  != null &&
-            cidade.trim().replaceAll("\\s+", "").length() > 3 && 
-            cidade.length() <= 30
-        );
-    }
-
-    private boolean validaUf(String uf){
-        return (
-            uf != null && 
-            uf.trim().replaceAll("\\s+", "").length() == 2
-        );
-    }
-
-    private boolean validaCep(String cep){
-        return (
-            cep != null &&
-            cep.trim().replaceAll("[^0-9]", "").length() == 8
-        );
-    }
-
-    private boolean validaCnpj(String cnpj){
-        return (
-            cnpj != null &&
-            cnpj.trim().replaceAll("[^0-9]", "").length() == 14
-        );
-    }
-
-    private boolean validaGerente(String gerente){
-        return (
-            gerente != null &&
-            gerente.trim().replaceAll("\\s+", "").length() > 5
-        );
-    }
     
-    private boolean validaTelefone(String telefone) {
-        return telefone == null || telefone.length() <= 13;
-    }
-
-    private boolean validaAgencia(String numAgencia, String nome, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String telefone) {
-        return validaNumAgencia(numAgencia) && validaNome(nome) && validaEndereco(endereco) && validaNumero(numero) && validaComplemento(complemento) && validaBairro(bairro) && validaCidade(cidade) && validaUf(uf) && validaCep(cep) && validaTelefone(telefone);
-    }
-
-    public String getNumAgencia() {
-        return numAgencia;
-    }
-
-    public void setNumAgencia(String numAgencia) {
-        if (!validaNumAgencia(numAgencia)){
-            throw new IllegalArgumentException("Número de agência inválido");
-        }
-        this.numAgencia = numAgencia;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        if (!validaNome(nome)) {
-            throw new IllegalArgumentException("Nome inválido");
-        }
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        if (!validaEndereco(endereco)) {
-            throw new IllegalArgumentException("Endereço inválido");
-        }
-        this.endereco = endereco;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        if (!validaNumero(numero)) {
-            throw new IllegalArgumentException("Número inválido");
-        }
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        if (!validaComplemento(complemento)) {
-            throw new IllegalArgumentException("Complemento inválido");
-        }
-        this.complemento = complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        if (!validaBairro(bairro)) {
-            throw new IllegalArgumentException("Bairro inválido");
-        }
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        if (!validaCidade(cidade)) {
-            throw new IllegalArgumentException("Cidade inválida");
-        }
-        this.cidade = cidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        if (!validaUf(uf)) {
-            throw new IllegalArgumentException("UF inválida");
-        }
-        this.uf = uf;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        if (!validaCep(cep)) {
-            throw new IllegalArgumentException("CEP inválido");
-        }
-        this.cep = cep;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        if (!validaCnpj(cnpj)) {
-            throw new IllegalArgumentException("CNPJ inválido");
-        }
-        this.cnpj = cnpj;
-    }
-
-    public String getGerente() {
-        return gerente;
-    }
-
-    public void setGerente(String gerente) {
-        if (!validaGerente(gerente)) {
-            throw new IllegalArgumentException("Gerente inválido");
-        }
-        this.gerente = gerente;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        if (!validaTelefone(telefone)) {
-            throw new IllegalArgumentException("Telefone inválido");
-        }
-        this.telefone = telefone;
-    }
-
     public String getTableName() {
         return tableName;
+    }
+    public String dadosSQLValues() {
+        return "'" 
+            + this.numAge + "', '"
+            + this.nomeAge + "', '"
+            + this.endeAge + "', '"
+            + this.numeAge + "', '"
+            + this.complAge + "', '"
+            + this.bairAge + "', '"
+            + this.cidaAge + "', '"
+            + this.ufAge + "', '"
+            + this.cepAge + "', '"
+            + this.foneAge + "'";
+    }
+
+    public Agencia(int numAge, String nomeAge, String endeAge, String numeAge, 
+                   String complAge, String bairAge, String cidaAge, 
+                   String ufAge, String cepAge, String foneAge) {
+        this.numAge = numAge;
+        this.nomeAge = nomeAge;
+        this.endeAge = endeAge;
+        this.numeAge = numeAge;
+        this.complAge = complAge;
+        this.bairAge = bairAge;
+        this.cidaAge = cidaAge;
+        this.ufAge = ufAge;
+        this.cepAge = cepAge;
+        this.foneAge = foneAge;
+    }
+
+    // Validação para numAge (deve ser positivo e no intervalo válido)
+    public int getNumAge() { return numAge; }
+    public void setNumAge(int numAge) {
+        if (numAge <= 0 || String.valueOf(numAge).length() > 5) {
+            throw new IllegalArgumentException("O número da agência deve ser positivo e conter até 5 dígitos.");
+        }
+        this.numAge = numAge;
+    }
+
+    // Validação para nomeAge (não pode ser nulo ou vazio, e deve ter até 30 caracteres)
+    public String getNomeAge() { return nomeAge; }
+    public void setNomeAge(String nomeAge) {
+        if (nomeAge == null || nomeAge.trim().isEmpty() || nomeAge.length() > 30) {
+            throw new IllegalArgumentException("O nome da agência não pode ser vazio e deve ter até 30 caracteres.");
+        }
+        this.nomeAge = nomeAge.trim();
+    }
+
+    public String getEndeAge() { return endeAge; }
+    public void setEndeAge(String endeAge) {
+        if (endeAge == null || endeAge.trim().isEmpty() || endeAge.length() > 50) {
+            throw new IllegalArgumentException("O endereço da agência não pode ser vazio e deve ter até 50 caracteres.");
+        }
+        this.endeAge = endeAge.trim();
+    }
+
+    public String getNumeAge() { return numeAge; }
+    public void setNumeAge(String numeAge) {
+        if (numeAge != null && numeAge.length() > 8) {
+            throw new IllegalArgumentException("O número deve ter até 8 caracteres.");
+        }
+        this.numeAge = numeAge != null ? numeAge.trim() : null;
+    }
+
+    public String getComplAge() { return complAge; }
+    public void setComplAge(String complAge) {
+        if (complAge != null && complAge.length() > 20) {
+            throw new IllegalArgumentException("O complemento deve ter até 20 caracteres.");
+        }
+        this.complAge = complAge != null ? complAge.trim() : null;
+    }
+
+    public String getBairAge() { return bairAge; }
+    public void setBairAge(String bairAge) {
+        if (bairAge != null && bairAge.length() > 20) {
+            throw new IllegalArgumentException("O bairro deve ter até 20 caracteres.");
+        }
+        this.bairAge = bairAge != null ? bairAge.trim() : null;
+    }
+
+    public String getCidaAge() { return cidaAge; }
+    public void setCidaAge(String cidaAge) {
+        if (cidaAge == null || cidaAge.trim().isEmpty() || cidaAge.length() > 30) {
+            throw new IllegalArgumentException("A cidade não pode ser vazia e deve ter até 30 caracteres.");
+        }
+        this.cidaAge = cidaAge.trim();
+    }
+
+    public String getUfAge() { return ufAge; }
+    public void setUfAge(String ufAge) {
+        if (ufAge == null || ufAge.trim().length() != 2) {
+            throw new IllegalArgumentException("O UF deve conter exatamente 2 caracteres.");
+        }
+        this.ufAge = ufAge.trim().toUpperCase();
+    }
+
+    public String getCepAge() { return cepAge; }
+    public void setCepAge(String cepAge) {
+        if (cepAge == null || cepAge.trim().length() != 8 || !cepAge.matches("\\d{8}")) {
+            throw new IllegalArgumentException("O CEP deve conter exatamente 8 caracteres numéricos.");
+        }
+        this.cepAge = cepAge.trim();
+    }
+
+    public String getFoneAge() { return foneAge; }
+    public void setFoneAge(String foneAge) {
+        if (foneAge != null && foneAge.length() > 13) {
+            throw new IllegalArgumentException("O telefone deve ter até 13 caracteres.");
+        }
+        this.foneAge = foneAge != null ? foneAge.trim() : null;
     }
 }
