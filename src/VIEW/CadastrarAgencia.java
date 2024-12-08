@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
+
+import DAO.Agencia;
+import DAO.ConnectDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +17,8 @@ public class CadastrarAgencia extends javax.swing.JFrame {
         initComponents();
     }
 
+    Agencia agenciaTela = new Agencia();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,40 +29,45 @@ public class CadastrarAgencia extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        codAgencia = new javax.swing.JTextField();
-        nomeAgencia = new javax.swing.JTextField();
+        NUM_AGE = new javax.swing.JTextField();
+        NOME_AGE = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        enderecoAgencia = new javax.swing.JTextField();
+        ENDE_AGE = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        numeroEndAgencia = new javax.swing.JTextField();
-        bairroAgencia = new javax.swing.JTextField();
+        NUME_AGE = new javax.swing.JTextField();
+        BAIR_AGE = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        cepAgencia = new javax.swing.JTextField();
+        UF_AGE = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cidadeAgencia = new javax.swing.JTextField();
+        CIDA_AGE = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cnpjAgencia = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        gerenteAgencia = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        FONE_AGE = new javax.swing.JTextField();
+        BotaoCadastrarAgencia = new javax.swing.JButton();
+        COMPL_AGE = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        CEP_AGE = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        BOTAO_VOLTAR = new javax.swing.JButton();
+        BotaoLimpar = new javax.swing.JButton();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel1.setText("Cód. da Agência:");
+        jLabel1.setText("Numero da agência");
 
-        codAgencia.addActionListener(new java.awt.event.ActionListener() {
+        NUM_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codAgenciaActionPerformed(evt);
+                NUM_AGEActionPerformed(evt);
             }
         });
 
-        nomeAgencia.addActionListener(new java.awt.event.ActionListener() {
+        NOME_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeAgenciaActionPerformed(evt);
+                NOME_AGEActionPerformed(evt);
             }
         });
 
@@ -70,61 +77,101 @@ public class CadastrarAgencia extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel3.setText("Endereço:");
 
-        enderecoAgencia.addActionListener(new java.awt.event.ActionListener() {
+        ENDE_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enderecoAgenciaActionPerformed(evt);
+                ENDE_AGEActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel4.setText("Número:");
 
+        NUME_AGE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NUME_AGEActionPerformed(evt);
+            }
+        });
+
+        BAIR_AGE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAIR_AGEActionPerformed(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel5.setText("Bairro:");
 
-        cepAgencia.addActionListener(new java.awt.event.ActionListener() {
+        UF_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cepAgenciaActionPerformed(evt);
+                UF_AGEActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel6.setText("CEP:");
 
-        cidadeAgencia.addActionListener(new java.awt.event.ActionListener() {
+        CIDA_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cidadeAgenciaActionPerformed(evt);
+                CIDA_AGEActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel7.setText("Cidade:");
 
-        cnpjAgencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnpjAgenciaActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel9.setText("CNPJ:");
-
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel10.setText("Gerente:");
+        jLabel10.setText("Telefone:");
 
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        FONE_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                FONE_AGEActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotaoCadastrarAgencia.setText("Cadastrar");
+        BotaoCadastrarAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotaoCadastrarAgenciaActionPerformed(evt);
             }
         });
+
+        COMPL_AGE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COMPL_AGEActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jLabel8.setText("Complemento:");
+
+        CEP_AGE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CEP_AGEActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jLabel11.setText("UF:");
+
+        BOTAO_VOLTAR.setText("< Voltar");
+        BOTAO_VOLTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTAO_VOLTARActionPerformed(evt);
+            }
+        });
+
+        BotaoLimpar.setText("Limpar");
+        BotaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoLimparActionPerformed(evt);
+            }
+        });
+
+        label1.setFont(new java.awt.Font("Corbel", 3, 24)); // NOI18N
+        label1.setText("Cadastrar nova agência");
+
+        label2.setFont(new java.awt.Font("Ebrima", 0, 18)); // NOI18N
+        label2.setText("Onde está localizada?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,132 +180,203 @@ public class CadastrarAgencia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(enderecoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addComponent(BOTAO_VOLTAR)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(COMPL_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(FONE_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(BotaoCadastrarAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(BotaoLimpar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CIDA_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel4))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(CEP_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(70, 70, 70)
+                                                .addComponent(jLabel11)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(UF_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(ENDE_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(NUME_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(BAIR_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2))
-                                .addGap(4, 4, 4)
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nomeAgencia)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(codAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(42, 42, 42))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cepAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cidadeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bairroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cnpjAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gerenteAgencia))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                    .addComponent(NUM_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NOME_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(codAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nomeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enderecoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bairroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cepAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(cidadeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(gerenteAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cnpjAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jButton2)
-                .addGap(0, 44, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(NUM_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NOME_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(24, 24, 24)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(CEP_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(UF_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(ENDE_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(NUME_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(BAIR_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(COMPL_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CIDA_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(FONE_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(BOTAO_VOLTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotaoCadastrarAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codAgenciaActionPerformed
+    private void NUM_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUM_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codAgenciaActionPerformed
+    }//GEN-LAST:event_NUM_AGEActionPerformed
 
-    private void enderecoAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoAgenciaActionPerformed
+    private void ENDE_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENDE_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_enderecoAgenciaActionPerformed
+    }//GEN-LAST:event_ENDE_AGEActionPerformed
 
-    private void nomeAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeAgenciaActionPerformed
+    private void NOME_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOME_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeAgenciaActionPerformed
+    }//GEN-LAST:event_NOME_AGEActionPerformed
 
-    private void cepAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepAgenciaActionPerformed
+    private void UF_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UF_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cepAgenciaActionPerformed
+    }//GEN-LAST:event_UF_AGEActionPerformed
 
-    private void cidadeAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeAgenciaActionPerformed
+    private void CIDA_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIDA_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cidadeAgenciaActionPerformed
+    }//GEN-LAST:event_CIDA_AGEActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BotaoCadastrarAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarAgenciaActionPerformed
+        try {
+        this.agenciaTela.setNumAge(Integer.parseInt(this.NUM_AGE.getText()));
+        this.agenciaTela.setNomeAge(this.NOME_AGE.getText());
+        this.agenciaTela.setCepAge(this.CEP_AGE.getText());
+        this.agenciaTela.setUfAge(this.UF_AGE.getText());
+        this.agenciaTela.setEndeAge(this.ENDE_AGE.getText());
+        this.agenciaTela.setNumeAge(this.NUME_AGE.getText());
+        this.agenciaTela.setBairAge(this.BAIR_AGE.getText());
+        this.agenciaTela.setComplAge(this.COMPL_AGE.getText());
+        this.agenciaTela.setCidaAge(this.CIDA_AGE.getText());
+        this.agenciaTela.setFoneAge(this.FONE_AGE.getText());
+        
+        ConnectDao connDAO = new ConnectDao();
+        connDAO.connectDB();
+        
+        String tableName = this.agenciaTela.getTableName(); 
+        String values = this.agenciaTela.dadosSQLValues();
+        connDAO.insereRegistroJFBD(tableName, values);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
+        
+        } catch (IllegalArgumentException err) {        
+            JOptionPane.showMessageDialog(this, err.getMessage());
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();    }//GEN-LAST:event_BotaoCadastrarAgenciaActionPerformed
 
-    private void cnpjAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjAgenciaActionPerformed
+    private void COMPL_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COMPL_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cnpjAgenciaActionPerformed
+    }//GEN-LAST:event_COMPL_AGEActionPerformed
+
+    private void CEP_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEP_AGEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CEP_AGEActionPerformed
+
+    private void NUME_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUME_AGEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NUME_AGEActionPerformed
+
+    private void BAIR_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAIR_AGEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BAIR_AGEActionPerformed
+
+    private void BOTAO_VOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_VOLTARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BOTAO_VOLTARActionPerformed
+
+    private void FONE_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FONE_AGEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FONE_AGEActionPerformed
+
+    private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,25 +414,30 @@ public class CadastrarAgencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bairroAgencia;
-    private javax.swing.JTextField cepAgencia;
-    private javax.swing.JTextField cidadeAgencia;
-    private javax.swing.JTextField cnpjAgencia;
-    private javax.swing.JTextField codAgencia;
-    private javax.swing.JTextField enderecoAgencia;
-    private javax.swing.JTextField gerenteAgencia;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField BAIR_AGE;
+    private javax.swing.JButton BOTAO_VOLTAR;
+    private javax.swing.JButton BotaoCadastrarAgencia;
+    private javax.swing.JButton BotaoLimpar;
+    private javax.swing.JTextField CEP_AGE;
+    private javax.swing.JTextField CIDA_AGE;
+    private javax.swing.JTextField COMPL_AGE;
+    private javax.swing.JTextField ENDE_AGE;
+    private javax.swing.JTextField FONE_AGE;
+    private javax.swing.JTextField NOME_AGE;
+    private javax.swing.JTextField NUME_AGE;
+    private javax.swing.JTextField NUM_AGE;
+    private javax.swing.JTextField UF_AGE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField nomeAgencia;
-    private javax.swing.JTextField numeroEndAgencia;
+    private javax.swing.JLabel jLabel8;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
 }
