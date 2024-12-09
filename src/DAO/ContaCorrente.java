@@ -2,20 +2,27 @@ package DAO;
 
 
 public class ContaCorrente {
-    private String tableName = "ContaCorrente";
-    private String numConta;
-    private String numAgencia;
-    private int idCli;
+    private String tableName = "CONTACORRENTE";
+    private String NUM_CC;
+    private String NUM_AGE;
+    private int ID_CLI;
     private int saldo;
 
     public ContaCorrente() {
         
     }
+    public String dadosSQLValues() {
+        return "'" 
+           + this.NUM_CC + "', '"
+           + this.NUM_AGE + "', '"
+           + this.ID_CLI + "', '"
+           + this.saldo + "', '";
+    }
     
-    public ContaCorrente(String numConta, String numAgencia, int idCli, int saldo) {
-        this.numConta = numConta;
-        this.numAgencia = numAgencia;
-        this.idCli = idCli;
+    public ContaCorrente(String NUM_CC, String NUM_AGE, int ID_CLI, int saldo) {
+        this.NUM_CC = NUM_CC;
+        this.NUM_AGE = NUM_AGE;
+        this.ID_CLI = ID_CLI;
         this.saldo = saldo;
     }
 
@@ -45,49 +52,49 @@ public class ContaCorrente {
         return saldo >= 0;
     }
 
-    private boolean validaNumConta(String numConta) {
-        return numConta != null && numConta.trim().length() > 0 && numConta.length() <= 10;
+    private boolean validaNumConta(String NUM_CC) {
+        return NUM_CC != null && NUM_CC.trim().length() > 0 && NUM_CC.length() <= 10;
     }
 
-    private boolean validaNumAgencia(String numAgencia) {
-        return numAgencia != null && numAgencia.trim().length() > 0 && numAgencia.length() <= 5;
+    private boolean validaNumAgencia(String NUM_AGE) {
+        return NUM_AGE != null && NUM_AGE.trim().length() > 0 && NUM_AGE.length() <= 5;
     }
 
-    private boolean validaIdCli(int idCli) {
-        return idCli > 0;
+    private boolean validaIdCli(int ID_CLI) {
+        return ID_CLI > 0;
     }
 
     public String getNumConta() {
-        return numConta;
+        return NUM_CC;
     }
 
-    public void setNumConta(String numConta) {
-        if (!validaNumConta(numConta)) {
+    public void setNumConta(String NUM_CC) {
+        if (!validaNumConta(NUM_CC)) {
             throw new IllegalArgumentException("Número da conta inválido. Deve ter pelo menos 1 caractere.");
         }
-        this.numConta = numConta;
+        this.NUM_CC = NUM_CC;
     }
 
     public String getNumAgencia() {
-        return numAgencia;
+        return NUM_AGE;
     }
 
-    public void setNumAgencia(String numAgencia) {
-        if (!validaNumAgencia(numAgencia)) {
+    public void setNumAgencia(String NUM_AGE) {
+        if (!validaNumAgencia(NUM_AGE)) {
             throw new IllegalArgumentException("Número da agência inválido.");
         }
-        this.numAgencia = numAgencia;
+        this.NUM_AGE = NUM_AGE;
     }
 
     public int getIdCli() {
-        return idCli;
+        return ID_CLI;
     }
 
-    public void setIdCli(int idCli) {
-        if (!validaIdCli(idCli)) {
+    public void setIdCli(int ID_CLI) {
+        if (!validaIdCli(ID_CLI)) {
             throw new IllegalArgumentException("ID do cliente inválido.");
         }
-        this.idCli = idCli;
+        this.ID_CLI = ID_CLI;
     }
 
     public int getSaldo() {
