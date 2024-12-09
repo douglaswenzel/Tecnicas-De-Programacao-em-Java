@@ -4,14 +4,14 @@ package DAO;
 import java.util.Date;
 
 public class ExtratoMovimentacao {
-    private String tableName = "Mov";
-    private String numConta;
-    private String numAgencia;
-    private String documento;
-    private Date dataMovimento;
-    private String creditoDebito;
-    private int id_his;
-    private String complHist;
+    private String tableName = "MOVIMENTACAO";
+    private String NUM_CC;
+    private String NUM_AGE;
+    private String NUM_DOCTO;
+    private Date DATA_MOV;
+    private String DEBITO_CREDITO;
+    private int ID_HIS;
+    private String COMPL_HIS;
     private double valor;
     private double saldo;
 
@@ -19,44 +19,44 @@ public class ExtratoMovimentacao {
     }
     
 
-    public ExtratoMovimentacao(String numConta, String numAgencia, String documento, Date dataMovimento, String creditoDebito, int id_his, String complHist, int valor, int saldo) {
-        this.numConta = numConta;
-        this.numAgencia = numAgencia;
-        this.documento = documento;
-        this.dataMovimento = dataMovimento;
-        this.creditoDebito = creditoDebito;
-        this.id_his = id_his;
-        this.complHist = complHist;
+    public ExtratoMovimentacao(String NUM_CC, String NUM_AGE, String NUM_DOCTO, Date DATA_MOV, String DEBITO_CREDITO, int ID_HIS, String COMPL_HIS, int valor, int saldo) {
+        this.NUM_CC = NUM_CC;
+        this.NUM_AGE = NUM_AGE;
+        this.NUM_DOCTO = NUM_DOCTO;
+        this.DATA_MOV = DATA_MOV;
+        this.DEBITO_CREDITO = DEBITO_CREDITO;
+        this.ID_HIS = ID_HIS;
+        this.COMPL_HIS = COMPL_HIS;
         this.valor = valor;
         this.saldo = saldo;
     }
     
-    private boolean validaNumConta(String numConta) {
-        return numConta != null && numConta.trim().length() > 0 && numConta.length() <= 10;
+    private boolean validaNumConta(String NUM_CC) {
+        return NUM_CC != null && NUM_CC.trim().length() > 0 && NUM_CC.length() <= 10;
     }
 
-    private boolean validaNumAgencia(String numAgencia) {
-        return numAgencia != null && numAgencia.trim().length() > 0 && numAgencia.length() <= 5;
+    private boolean validaNumAgencia(String NUM_AGE) {
+        return NUM_AGE != null && NUM_AGE.trim().length() > 0 && NUM_AGE.length() <= 5;
     }
 
-    private boolean validaDocumento(String documento) {
-        return documento != null && documento.trim().length() > 0 && documento.length() <= 6;
+    private boolean validaDocumento(String NUM_DOCTO) {
+        return NUM_DOCTO != null && NUM_DOCTO.trim().length() > 0 && NUM_DOCTO.length() <= 6;
     }
 
-    private boolean validaDataMovimento(Date dataMovimento) {
-        return dataMovimento != null;
+    private boolean validaDataMovimento(Date DATA_MOV) {
+        return DATA_MOV != null;
     }
 
-    private boolean validaCreditoDebito(String creditoDebito) {
-        return creditoDebito != null && (creditoDebito.equalsIgnoreCase("C") || creditoDebito.equalsIgnoreCase("D"));
+    private boolean validaCreditoDebito(String DEBITO_CREDITO) {
+        return DEBITO_CREDITO != null && (DEBITO_CREDITO.equalsIgnoreCase("C") || DEBITO_CREDITO.equalsIgnoreCase("D"));
     }
 
-    private boolean validaId_his(int id_his) {
-        return id_his > 0;
+    private boolean validaId_his(int ID_HIS) {
+        return ID_HIS > 0;
     }
 
-    private boolean validaComplHist(String complHist) {
-        return complHist == null || complHist.length() <= 30;
+    private boolean validaComplHist(String COMPL_HIS) {
+        return COMPL_HIS == null || COMPL_HIS.length() <= 30;
     }
 
     private boolean validaValor(int valor) {
@@ -68,80 +68,80 @@ public class ExtratoMovimentacao {
     }
 
     public String getNumConta() {
-        return numConta;
+        return NUM_CC;
     }
 
-    public void setNumConta(String numConta) {
-        if (!validaNumConta(numConta)) {
+    public void setNumConta(String NUM_CC) {
+        if (!validaNumConta(NUM_CC)) {
             throw new IllegalArgumentException("Número da conta inválido");
         }
-        this.numConta = numConta;
+        this.NUM_CC = NUM_CC;
     }
 
     public String getNumAgencia() {
-        return numAgencia;
+        return NUM_AGE;
     }
 
-    public void setNumAgencia(String numAgencia) {
-        if (!validaNumAgencia(numAgencia)) {
+    public void setNumAgencia(String NUM_AGE) {
+        if (!validaNumAgencia(NUM_AGE)) {
             throw new IllegalArgumentException("Número da agência inválido");
         }
-        this.numAgencia = numAgencia;
+        this.NUM_AGE = NUM_AGE;
     }
 
     public String getDocumento() {
-        return documento;
+        return NUM_DOCTO;
     }
 
-    public void setDocumento(String documento) {
-        if (!validaDocumento(documento)) {
+    public void setDocumento(String NUM_DOCTO) {
+        if (!validaDocumento(NUM_DOCTO)) {
             throw new IllegalArgumentException("Documento inválido");
         }
-        this.documento = documento;
+        this.NUM_DOCTO = NUM_DOCTO;
     }
 
     public Date getDataMovimento() {
-        return dataMovimento;
+        return DATA_MOV;
     }
 
-    public void setDataMovimento(Date dataMovimento) {
-        if (!validaDataMovimento(dataMovimento)) {
+    public void setDataMovimento(Date DATA_MOV) {
+        if (!validaDataMovimento(DATA_MOV)) {
             throw new IllegalArgumentException("Data de movimento inválida");
         }
-        this.dataMovimento = dataMovimento;
+        this.DATA_MOV = DATA_MOV;
     }
 
     public String getCreditoDebito() {
-        return creditoDebito;
+        return DEBITO_CREDITO;
     }
 
-    public void setCreditoDebito(String creditoDebito) {
-        if (!validaCreditoDebito(creditoDebito)) {
+    public void setCreditoDebito(String DEBITO_CREDITO) {
+        if (!validaCreditoDebito(DEBITO_CREDITO)) {
             throw new IllegalArgumentException("Crédito/Débito inválido");
         }
-        this.creditoDebito = creditoDebito;
+        this.DEBITO_CREDITO = DEBITO_CREDITO;
     }
 
     public int getId_his() {
-        return id_his;
+        return ID_HIS;
     }
 
-    public void setId_his(int id_his) {
-        if (!validaId_his(id_his)) {
+    public void setId_his(int ID_HIS) {
+        if (!validaId_his(ID_HIS)) {
             throw new IllegalArgumentException("ID histórico inválido");
         }
-        this.id_his = id_his;
+        this.ID_HIS = ID_HIS;
     }
 
     public String getComplHist() {
-        return complHist;
+        return COMPL_HIS;
     }
 
-    public void setComplHist(String complHist) {
-        if (!validaComplHist(complHist)) {
+    public void setComplHist(String COMPL_HIS) {
+        if (!validaComplHist(COMPL_HIS)) {
             throw new IllegalArgumentException("Complemento histórico inválido");
         }
-        this.complHist = complHist;
+        this.COMPL_HIS = COMPL_HIS;
     }
 
     public int getValor() {
