@@ -4,273 +4,201 @@ import java.util.Date;
 
 
 public class Cliente {
-    private String tableName = "Clientes";
-    private int idCli;
-    private String nome;
-    private String cpf;
-    private String cnpj;
-    private String endereco;
-    private String numero;
-    private String complemento;
-    private String bairro;
-    private String cidade;
-    private String uf;
-    private String cep;
-    private String email;
-    private String telefone;
-    private String sexo;
-    private boolean status;
-    private Date dataNascimento;
+    private int ID_CLI; // decimal(9,0)
+    private String NOME_CLI; // varchar(50)
+    private String ENDE_CLI; // varchar(50)
+    private String NUME_CLI; // varchar(8)
+    private String COMPL_CLI; // varchar(20)
+    private String BAIR_CLI; // varchar(20)
+    private String CIDA_CLI; // varchar(30)
+    private String UF_CLI; // char(2)
+    private String CEP_CLI; // char(8)
+    private String FONE_CLI; // varchar(13)
+    private String CPF_CLI; // char(11)
+    private Date DATA_NASC; // datetime
+    private String CNPJ_CLI; // char(14)
 
     public Cliente() {
     }
 
-    public Cliente(int idCli, String nome, String cpf, String cnpj, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String email, String telefone, String sexo, boolean status) {
-        this.idCli = idCli;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
-        this.endereco = endereco;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.email = email;
-        this.telefone = telefone;
-        this.sexo = sexo;
-        this.status = status;
+  
+    public Cliente(int ID_CLI, String NOME_CLI, String ENDE_CLI, String NUME_CLI, String COMPL_CLI, String BAIR_CLI, String CIDA_CLI,
+                   String UF_CLI, String CEP_CLI, String FONE_CLI, String CPF_CLI, Date DATA_NASC, String CNPJ_CLI) {
+        this.ID_CLI = ID_CLI;
+        this.NOME_CLI = NOME_CLI;
+        this.ENDE_CLI = ENDE_CLI;
+        this.NUME_CLI = NUME_CLI;
+        this.COMPL_CLI = COMPL_CLI;
+        this.BAIR_CLI = BAIR_CLI;
+        this.CIDA_CLI = CIDA_CLI;
+        this.UF_CLI = UF_CLI;
+        this.CEP_CLI = CEP_CLI;
+        this.FONE_CLI = FONE_CLI;
+        this.CPF_CLI = CPF_CLI;
+        this.DATA_NASC = DATA_NASC;
+        this.CNPJ_CLI = CNPJ_CLI;  
+    }
+        public int getIdCli() {
+        return ID_CLI;
     }
 
-    private boolean validaIdCli(int idCli) {
-        return idCli > 0;
+    public void setIdCli(int ID_CLI) {
+        if (ID_CLI <= 0) {
+            throw new IllegalArgumentException("ID do cliente deve ser um valor positivo.");
+        }
+        this.ID_CLI = ID_CLI;
     }
 
-    private boolean validaNome(String nome) {
-        return nome != null && nome.trim().length() > 2 && nome.length() <= 50;
+    public String getNomeCli() {
+        return NOME_CLI;
     }
 
-    private boolean validaCpf(String cpf) {
-        return cpf != null && cpf.trim().replaceAll("[^0-9]", "").length() == 11;
+    public void setNomeCli(String NOME_CLI) {
+        if (NOME_CLI == null || NOME_CLI.trim().length() < 2 || NOME_CLI.length() > 50) {
+            throw new IllegalArgumentException("Nome deve ter entre 2 e 50 caracteres.");
+        }
+        this.NOME_CLI = NOME_CLI;
     }
 
-    private boolean validaCnpj(String cnpj) {
-        return cnpj != null && cnpj.trim().replaceAll("[^0-9]", "").length() == 14;
+    public String getEndeCli() {
+        return ENDE_CLI;
     }
 
-    private boolean validaEndereco(String endereco) {
-        return endereco != null && endereco.trim().length() > 5 && endereco.length() <= 50;
+    public void setEndeCli(String ENDE_CLI) {
+        if (ENDE_CLI == null || ENDE_CLI.trim().length() < 5 || ENDE_CLI.length() > 50) {
+            throw new IllegalArgumentException("Endereço deve ter entre 5 e 50 caracteres.");
+        }
+        this.ENDE_CLI = ENDE_CLI;
     }
 
-    private boolean validaNumero(String numero) {
-        return numero == null || (numero.trim().length() > 0 && numero.length() <= 8);
+    public String getNumeCli() {
+        return NUME_CLI;
     }
 
-    private boolean validaComplemento(String complemento) {
-        return complemento == null || (complemento.length() <= 20 && complemento.trim().length() > 0);
+    public void setNumeCli(String NUME_CLI) {
+        if (NUME_CLI != null && (NUME_CLI.trim().length() == 0 || NUME_CLI.length() > 8)) {
+            throw new IllegalArgumentException("Número deve ter até 8 caracteres ou ser vazio.");
+        }
+        this.NUME_CLI = NUME_CLI;
     }
 
-    private boolean validaBairro(String bairro) {
-        return bairro == null || (bairro.length() <= 20 && bairro.trim().length() > 2);
+    public String getComplCli() {
+        return COMPL_CLI;
     }
 
-    private boolean validaCidade(String cidade) {
-        return cidade != null && cidade.trim().length() > 2 && cidade.length() <= 30;
+    public void setComplCli(String COMPL_CLI) {
+        if (COMPL_CLI != null && (COMPL_CLI.trim().length() == 0 || COMPL_CLI.length() > 20)) {
+            throw new IllegalArgumentException("Complemento deve ter até 20 caracteres ou ser vazio.");
+        }
+        this.COMPL_CLI = COMPL_CLI;
     }
 
-    private boolean validaUf(String uf) {
-        return uf != null && uf.trim().length() == 2;
+    public String getBairCli() {
+        return BAIR_CLI;
     }
 
-    private boolean validaCep(String cep) {
-        return cep != null && cep.trim().replaceAll("[^0-9]", "").length() == 8;
+    public void setBairCli(String BAIR_CLI) {
+        if (BAIR_CLI != null && (BAIR_CLI.trim().length() < 2 || BAIR_CLI.length() > 20)) {
+            throw new IllegalArgumentException("Bairro deve ter entre 2 e 20 caracteres ou ser vazio.");
+        }
+        this.BAIR_CLI = BAIR_CLI;
     }
 
-    private boolean validaEmail(String email) {
-        return email != null && email.contains("@") && email.contains(".");
+    public String getCidaCli() {
+        return CIDA_CLI;
     }
 
-    private boolean validaTelefone(String telefone) {
-        return telefone == null || telefone.length() <= 13;
+    public void setCidaCli(String CIDA_CLI) {
+        if (CIDA_CLI == null || CIDA_CLI.trim().length() < 2 || CIDA_CLI.length() > 30) {
+            throw new IllegalArgumentException("Cidade deve ter entre 2 e 30 caracteres.");
+        }
+        this.CIDA_CLI = CIDA_CLI;
     }
 
-    private boolean validaSexo(String sexo) {
-        return sexo != null && sexo.trim().length() > 0;
+    public String getUfCli() {
+        return UF_CLI;
+    }
+
+    public void setUfCli(String UF_CLI) {
+        if (UF_CLI == null || UF_CLI.trim().length() != 2) {
+            throw new IllegalArgumentException("UF deve conter exatamente 2 caracteres.");
+        }
+        this.UF_CLI = UF_CLI;
+    }
+
+    public String getCepCli() {
+        return CEP_CLI;
+    }
+
+    public void setCepCli(String CEP_CLI) {
+        if (CEP_CLI == null || CEP_CLI.trim().replaceAll("[^0-9]", "").length() != 8) {
+            throw new IllegalArgumentException("CEP deve conter exatamente 8 dígitos.");
+        }
+        this.CEP_CLI = CEP_CLI;
+    }
+
+    public String getFoneCli() {
+        return FONE_CLI;
+    }
+
+    public void setFoneCli(String FONE_CLI) {
+        if (FONE_CLI != null && FONE_CLI.length() > 13) {
+            throw new IllegalArgumentException("Telefone deve ter até 13 caracteres ou ser vazio.");
+        }
+        this.FONE_CLI = FONE_CLI;
+    }
+
+    public String getCpfCli() {
+        return CPF_CLI;
+    }
+
+    public void setCpfCli(String CPF_CLI) {
+        if (CPF_CLI != null && CPF_CLI.trim().replaceAll("[^0-9]", "").length() != 11) {
+            throw new IllegalArgumentException("CPF deve conter exatamente 11 dígitos.");
+        }
+        this.CPF_CLI = CPF_CLI;
+    }
+
+    public Date getDataNasc() {
+        return DATA_NASC;
+    }
+
+    public void setDataNasc(Date DATA_NASC) {
+        if (DATA_NASC == null) {
+            throw new IllegalArgumentException("Data de nascimento não pode ser nula.");
+        }
+        this.DATA_NASC = DATA_NASC;
+    }
+
+    public String getCnpjCli() {
+        return CNPJ_CLI;
+    }
+
+    public void setCnpjCli(String CNPJ_CLI) {
+        if (CNPJ_CLI != null && CNPJ_CLI.trim().replaceAll("[^0-9]", "").length() != 14) {
+            throw new IllegalArgumentException("CNPJ deve conter exatamente 14 dígitos.");
+        }
+        this.CNPJ_CLI = CNPJ_CLI;
     }
     
-    private boolean validaDataNascimento(Date dataNascimento) {
-        return dataNascimento != null;
+  
+    
+    public String dadosSQLValues() {
+        return String.format(
+            "'%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%tF', '%s'",
+            this.ID_CLI,
+            this.NOME_CLI,
+            this.ENDE_CLI,
+            this.NUME_CLI != null ? this.NUME_CLI : "",
+            this.COMPL_CLI != null ? this.COMPL_CLI : "",
+            this.BAIR_CLI != null ? this.BAIR_CLI : "",
+            this.CIDA_CLI,
+            this.UF_CLI,
+            this.CEP_CLI,
+            this.FONE_CLI != null ? this.FONE_CLI : "",
+            this.CPF_CLI != null ? this.CPF_CLI : "",
+            this.DATA_NASC,
+            this.CNPJ_CLI != null ? this.CNPJ_CLI : ""
+        );  
     }
-
-    public int getIdCli() {
-        return idCli;
-    }
-
-    public void setIdCli(int idCli) {
-        this.idCli = idCli;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        if (!validaNome(nome)) {
-            throw new IllegalArgumentException("Nome inválido.");
-        }
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        if (!validaCpf(cpf)) {
-            throw new IllegalArgumentException("CPF inválido.");
-        }
-        this.cpf = cpf;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        if (!validaEndereco(endereco)) {
-            throw new IllegalArgumentException("Endereço inválido.");
-        }
-        this.endereco = endereco;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        if (!validaNumero(numero)) {
-            throw new IllegalArgumentException("Número inválido.");
-        }
-        this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        if (!validaComplemento(complemento)) {
-            throw new IllegalArgumentException("Complemento inválido.");
-        }
-        this.complemento = complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        if (!validaBairro(bairro)) {
-            throw new IllegalArgumentException("Bairro inválido.");
-        }
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        if (!validaCidade(cidade)) {
-            throw new IllegalArgumentException("Cidade inválida.");
-        }
-        this.cidade = cidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        if (!validaUf(uf)) {
-            throw new IllegalArgumentException("UF inválida");
-        }
-        this.uf = uf;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        if (!validaCep(cep)) {
-            throw new IllegalArgumentException("CEP com mínimo de 8 dígitos");
-        }
-        this.cep = cep;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        if (!validaEmail(email)) {
-            throw new IllegalArgumentException("Email inválido. Deve conter @ e .");
-        }
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        if (!validaTelefone(telefone)) {
-            throw new IllegalArgumentException("Telefone inválido. Deve ter 10 dígitos.");
-        }
-        this.telefone = telefone;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        if (!validaCnpj(cnpj)) {
-            throw new IllegalArgumentException("CNPJ inválido. Deve ter 14 dígitos.");
-        }
-        this.cnpj = cnpj;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        if (!validaSexo(sexo)) {
-            throw new IllegalArgumentException("Gênero inválido.");
-        }
-        this.sexo = sexo;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        if (!validaDataNascimento(dataNascimento)) {
-            throw new IllegalArgumentException("Data de nascimento inválida.");
-        }
-        this.dataNascimento = dataNascimento;
-    }
-
 }
