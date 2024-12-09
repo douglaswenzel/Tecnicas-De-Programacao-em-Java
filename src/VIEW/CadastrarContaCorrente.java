@@ -4,6 +4,10 @@
  */
 package VIEW;
 
+import DAO.ConnectDao;
+import DAO.ContaCorrente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Douglas Wenzel
@@ -16,6 +20,7 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
     public CadastrarContaCorrente() {
         initComponents();
     }
+    ContaCorrente contaCorrenteTela = new ContaCorrente();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,15 +32,17 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        saldo = new javax.swing.JTextField();
-        numConta = new javax.swing.JTextField();
+        SALDO = new javax.swing.JTextField();
+        NUM_CC = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        numAgencia = new javax.swing.JTextField();
-        idCli = new javax.swing.JTextField();
+        NUM_AGE = new javax.swing.JTextField();
+        ID_CLI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        label1 = new java.awt.Label();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,9 +52,9 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
 
         jLabel2.setText("Agencia:");
 
-        numAgencia.addActionListener(new java.awt.event.ActionListener() {
+        NUM_AGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numAgenciaActionPerformed(evt);
+                NUM_AGEActionPerformed(evt);
             }
         });
 
@@ -69,6 +76,16 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
             }
         });
 
+        label1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        label1.setText("Cadastrar nova conta-corrente");
+
+        jButton3.setText("← Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3voltarTelaMenu(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,70 +93,117 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idCli, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NUM_CC, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SALDO, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton1)
-                                .addGap(25, 25, 25)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ID_CLI, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NUM_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(idCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ID_CLI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NUM_AGE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NUM_CC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SALDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(118, 118, 118))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cadastrarActionPerformed
-
+        try {
+            this.contaCorrenteTela.setNumConta(this.NUM_CC.getText());
+            this.contaCorrenteTela.setNumAgencia(this.NUM_AGE.getText());
+            this.contaCorrenteTela.setIdCli(Integer.parseInt(this.ID_CLI.getText()));
+            this.contaCorrenteTela.setSaldo(Integer.parseInt(this.SALDO.getText()));
+            
+            ConnectDao connDAO = new ConnectDao();
+            connDAO.connectDB();
+            String tableName = "CONTACORRENTE"; 
+            String values = this.contaCorrenteTela.dadosSQLValues();
+            connDAO.cadastrarCC(
+            "CONTACORRENTE",
+            this.contaCorrenteTela.getNumConta(),
+            this.contaCorrenteTela.getNumAgencia(),
+            this.contaCorrenteTela.getIdCli(),
+            this.contaCorrenteTela.getSaldo()
+        );
+        
+        
+        
+        } catch (IllegalArgumentException err) {        
+            JOptionPane.showMessageDialog(this, err.getMessage());
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, "Conta Corrente Cadastrada!");
+        
+        Menu Menu = new Menu();
+        Menu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton2cadastrarActionPerformed
 
     private void jButton1limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1limparActionPerformed
-        this.numConta.setText("");
-        this.numAgencia.setText("");
-        this.idCli.setText("");
-        this.saldo.setText("");
+        this.NUM_CC.setText("");
+        this.NUM_AGE.setText("");
+        this.ID_CLI.setText("");
+        this.SALDO.setText("");
     }//GEN-LAST:event_jButton1limparActionPerformed
 
-    private void numAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numAgenciaActionPerformed
+    private void NUM_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUM_AGEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numAgenciaActionPerformed
+    }//GEN-LAST:event_NUM_AGEActionPerformed
+
+    private void jButton3voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3voltarTelaMenu
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton3voltarTelaMenu
 
     /**
      * @param args the command line arguments
@@ -177,15 +241,17 @@ public class CadastrarContaCorrente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField idCli;
+    private javax.swing.JTextField ID_CLI;
+    private javax.swing.JTextField NUM_AGE;
+    private javax.swing.JTextField NUM_CC;
+    private javax.swing.JTextField SALDO;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField numAgencia;
-    private javax.swing.JTextField numConta;
-    private javax.swing.JTextField saldo;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

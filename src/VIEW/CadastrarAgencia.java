@@ -336,10 +336,7 @@ public class CadastrarAgencia extends javax.swing.JFrame {
         
         String tableName = this.agenciaTela.getTableName(); 
         String values = this.agenciaTela.dadosSQLValues();
-        connDAO.insereRegistroJFBD(tableName, values);
-
-        JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
-        
+        connDAO.cadastrarAgencia(tableName, values);     
         } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
@@ -367,15 +364,30 @@ public class CadastrarAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_BAIR_AGEActionPerformed
 
     private void BOTAO_VOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_VOLTARActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BOTAO_VOLTARActionPerformed
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+             }//GEN-LAST:event_BOTAO_VOLTARActionPerformed
 
     private void FONE_AGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FONE_AGEActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FONE_AGEActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-        // TODO add your handling code here:
+        this.NUME_AGE.setText("");
+        this.NUM_AGE.setText("");
+        this.NOME_AGE.setText("");
+        this.CEP_AGE.setText("");
+        this.UF_AGE.setText("");
+        this.ENDE_AGE.setText("");
+        this.BAIR_AGE.setText("");
+        this.COMPL_AGE.setText("");
+        this.CIDA_AGE.setText("");
+        this.FONE_AGE.setText("");
+        
+
+
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
     /**

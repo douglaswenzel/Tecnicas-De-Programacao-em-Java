@@ -256,7 +256,11 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem3abreCadastrarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3abreCadastrarCliente
-
+        ClienteCadastro telaNovoCliente = new ClienteCadastro();
+        telaNovoCliente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem3abreCadastrarCliente
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -264,23 +268,43 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4abreCadastrarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4abreCadastrarUsuario
-
+        UsuarioCadastrar telaNovoUsuario = new UsuarioCadastrar();
+        telaNovoUsuario.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem4abreCadastrarUsuario
 
     private void jMenuItem5abreCadastroContaCorrente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5abreCadastroContaCorrente
-
+        CadastrarContaCorrente telaNovaContaCorrente = new CadastrarContaCorrente();
+        telaNovaContaCorrente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem5abreCadastroContaCorrente
 
     private void jMenuItem6abreCadastroAgencia(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6abreCadastroAgencia
-
+        CadastrarAgencia telaNovaAgencia = new CadastrarAgencia();
+        telaNovaAgencia.setVisible(true);   
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem6abreCadastroAgencia
 
     private void jMenuItem7abreCadastrarExtrato(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7abreCadastrarExtrato
-
+        CadastrarExtratoMovimentacao telaNovoExtratoMovimentacao = new CadastrarExtratoMovimentacao();
+        telaNovoExtratoMovimentacao.setVisible(true);   
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem7abreCadastrarExtrato
 
     private void jMenuItem8abreCadastrarHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8abreCadastrarHistorico
-
+        CadastrarHistorico telaNovoHistorico = new CadastrarHistorico();
+        telaNovoHistorico.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem8abreCadastrarHistorico
 
     /**
